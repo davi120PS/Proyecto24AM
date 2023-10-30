@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Proyecto24AM.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//register services here
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
+builder.Configuration.GetConnectionString("DefaultConenection")));
 
 var app = builder.Build();
 
