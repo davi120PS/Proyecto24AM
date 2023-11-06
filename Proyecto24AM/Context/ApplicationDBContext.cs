@@ -16,7 +16,7 @@ namespace Proyecto24AM.Context
         public virtual DbSet<Rol> Roles { get; set; }
         public virtual DbSet<Book> Libros { get; set; }
 
-
+        public virtual DbSet<Article> Articles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<Rol>().HasData(
