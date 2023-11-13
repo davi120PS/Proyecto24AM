@@ -1,22 +1,126 @@
-html {
-  font-size: 14px;
+.left_area h3 {
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 900;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.left_area span {
+    color: #19B3D3;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.logout_btn {
+    padding: 5px;
+    background: #19B3D3;
+    text-decoration: none;
+    float: right;
+    margin-top: -30px;
+    margin-right: 40px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.5s;
+    transition-property: background;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+    .logout_btn:hover {
+        background: #0B87A6;
+    }
+
+.sidebar {
+    z-index: 1;
+    background: #2c3449;
+    margin-top: auto;
+    padding-top: 30px;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    transition: 0.5s;
+    transition-property: left;
+    overflow-y: auto;
 }
 
-body {
-  margin-bottom: 60px;
+.profile_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .profile_info .profile_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+
+.sidebar .profile_info h4 {
+    color: #ccc;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    text-decoration: none;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+}
+
+    .sidebar a:hover {
+        background: #19B3D3;
+    }
+
+.sidebar i {
+    padding-right: 10px;
+}
+
+label #sidebar_btn {
+    z-index: 1;
+    color: #fff;
+    position: fixed;
+    cursor: pointer;
+    left: 300px;
+    font-size: 20px;
+    margin: 5px 0;
+    transition: 0.5s;
+    transition-property: color;
+}
+
+    label #sidebar_btn:hover {
+        color: #19B3D3;
+    }
+
+#check:checked ~ .sidebar {
+    left: -185px;
+}
+
+    #check:checked ~ .sidebar a span {
+        display: none;
+    }
+
+    #check:checked ~ .sidebar a {
+        font-size: 20px;
+        margin-left: 165px;
+        width: 100%;
+    }
+
+.content {
+    width: (100% - 250px);
+    margin-top: 60px;
+    padding: 20px;
+    margin-left: 250px;
+    background: url(background.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    transition:  0.5s;
 }

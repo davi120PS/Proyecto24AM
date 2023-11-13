@@ -1,0 +1,46 @@
+﻿@model Proyecto24AM.Models.Entities.Article
+@{
+    Layout = "_LayoutDashboard";
+}
+
+<div class="container-fluid">
+    <div class="col-sm-8">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Crear articulo</strong></h1>
+
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="Crear" method="post">
+
+
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Ingresa el nombre" required />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" placeholder="Ingresa el descripción" required />
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" type="number" placeholder="Ingresa el precio" required />
+
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-secondary d-block mx-auto"><i class="bi bi-person-fill"></i> Guardar</button>
+                    </div>
+
+                </form>
+
+                <a asp-controller="Article" asp-action="Index">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>

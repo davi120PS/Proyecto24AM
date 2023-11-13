@@ -13,6 +13,21 @@ namespace Proyecto24AM.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Articles",
+                columns: table => new
+                {
+                    PKArticle = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Articles", x => x.PKArticle);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Libros",
                 columns: table => new
                 {
@@ -50,7 +65,7 @@ namespace Proyecto24AM.Migrations
                     lastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FKRol = table.Column<int>(type: "int", nullable: false)
+                    FKRol = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,8 +74,7 @@ namespace Proyecto24AM.Migrations
                         name: "FK_Usuarios_Roles_FKRol",
                         column: x => x.FKRol,
                         principalTable: "Roles",
-                        principalColumn: "PKRol",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PKRol");
                 });
 
             migrationBuilder.InsertData(
@@ -90,6 +104,9 @@ namespace Proyecto24AM.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Articles");
+
             migrationBuilder.DropTable(
                 name: "Libros");
 
