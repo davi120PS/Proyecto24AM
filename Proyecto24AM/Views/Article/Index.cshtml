@@ -89,48 +89,49 @@
                     }
                 }
             });
-            $('.eliminar-articulo').on('click', function () {
-            if (confirm('¿Estás seguro de que deseas eliminar este artículo?')) 
-            {
-                Swal.fire({
-                    title: "Esta seguro que deseas borrar?",
-                    text: "No podrás revertir esto.!",
-                    icon: "warning",
+        });
 
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Sí, deseo borrar!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
 
-                        var articuloId = $(this).data('id');
+        $('.eliminar-articulo').on('click', function () {
+            //if (confirm('¿Estás seguro de que deseas eliminar este artículo?')) {}
 
-                        $.ajax({
-                            url: '/Article/Eliminar/' + articuloId,
-                            type: 'DELETE',
-                            success: function (data) {
-                                console.log(data)
+            Swal.fire({
+                title: "Esta seguro que deseas borrar?",
+                text: "No podrás revertir esto.!",
+                icon: "warning",
 
-                                if (data.succes == true) {
-                                    //debugger
-                                    location.reload(); // Recarga la página completa
-                                    //window.location.href = "/Articulos/Index";
-                                }
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, deseo borrar!"
+            }).then((result) => {
+                if (result.isConfirmed) {
 
+                    var articuloId = $(this).data('id');
+
+                    $.ajax({
+                        url: '/Article/Eliminar/' + articuloId,
+                        type: 'DELETE',
+                        success: function (data) {
+                            console.log(data)
+
+                            if (data.succes == true) {
+                                //debugger
+                                location.reload(); // Recarga la página completa
+                                //window.location.href = "/Articulos/Index";
                             }
-                        });
 
+                        }
+                    });
 
-                        Swal.fire({
-                            title: "Eliminando!",
-                            text: "ha sido eliminado correctamente.",
-                            icon: "success",
-                            timer: 4000
-                        });
-                    }
-                });
-            }
+                    Swal.fire({
+                        title: "Eliminando!",
+                        text: "ha sido eliminado correctamente.",
+                        icon: "success",
+                        timer: 4000
+                    });
+                }
+            });
         });
     </script>
 }
