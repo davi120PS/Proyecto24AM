@@ -7,19 +7,22 @@
     <div class="col-sm-8">
         <div class="card border">
             <div class="card-header bg-dark">
-                <h1 class="text-white"><strong>Crear articulo</strong></h1>
+                <h1 class="text-white"><strong>Editar articulo</strong></h1>
 
             </div>
 
             <div class="card-body">
 
-                <form asp-action="Crear" method="post">
+                <form asp-action="Editar" method="post">
+
+                    @*ID Articulo oculto*@
+                    <input type="hidden" asp-for="PKArticle"/>
 
                     <div class="form-group">
                         <label asp-for="Name" class="control-label"></label>
                         <input asp-for="Name" class="form-control" placeholder="Ingresa el nombre" required />
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label asp-for="Description" class="control-label"></label>
                         <input asp-for="Description" class="form-control" placeholder="Ingresa el descripción" required />
                     </div>

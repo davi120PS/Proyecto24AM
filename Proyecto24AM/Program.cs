@@ -14,7 +14,7 @@ builder.Configuration.GetConnectionString("DefaultConenection")));
 
 //Inyección de dependencias
 builder.Services.AddTransient<IArticleServices, ArticleServices>();
-//INVESTIGAR DIFERENCIA DE TIPOS DE DEPENDENCIA, TRASIENT, SCOPED,SIGLETON
+//INVESTIGAR DIFERENCIA DE TIPOS DE DEPENDENCIA, TRASIENT, SCOPED,SINGLETON
 
 var app = builder.Build();
 

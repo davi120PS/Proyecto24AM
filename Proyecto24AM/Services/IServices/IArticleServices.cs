@@ -7,6 +7,7 @@ namespace Proyecto24AM.Services.IServices
         public Task<List<Article>> GetArticles();
         public Task<Article> GetByIdArticle(int id);
         public Task<Article> CreateArticle(Article i);
+        public Task<Article> EditArticle(Article i);
         public bool DeleteArticle(int id);
     }
 }

@@ -47,8 +47,8 @@ namespace Proyecto24AM.Services.Services
                     Price = i.Price
                 };
                 //Con esto se manda a la bd de forma asincrona
-                var result = _context.Articles.Add(request);
-                await _context.SaveChangesAsync();
+                var result = await _context.Articles.AddAsync(request);
+                 _context.SaveChanges();
 
                 return request;
             }
@@ -61,15 +61,22 @@ namespace Proyecto24AM.Services.Services
         {
             try
             {
-                Article request = new Article();
+                Article request = _context.Articles.Find(i.PKArticle);
                 request.Name = i.Name;
                 request.Description = i.Description;
                 request.Price = i.Price;
                 //Con esto se manda a la bd de forma asincrona
-                var result = _context.Articles.Update(request);
+
+                _context.Entry(request).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
 
                 return request;
+
+
+                /*var result = _context.Articles.Update(request);
+                await _context.SaveChangesAsync();
+
+                return request;*/
             }
             catch (Exception ex)
             {
@@ -102,11 +109,11 @@ namespace Proyecto24AM.Services.Services
             try
             {
                 Article article = _context.Articles.Find(id);
-                var res = _context.Articles.Remove(article);
-                _context.SaveChanges();
-
+                
                 if (article != null)
                 {
+                    var res = _context.Articles.Remove(article);
+                    _context.SaveChanges();
                     return true;
                 }
                 else
@@ -117,5 +124,6 @@ namespace Proyecto24AM.Services.Services
                 throw new Exception("Surgió un error" + ex.Message);
             }
         }
+
     }
 }
