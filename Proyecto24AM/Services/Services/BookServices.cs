@@ -6,29 +6,29 @@ using Azure.Core;
 
 namespace Proyecto24AM.Services.Services
 {
-    public class ArticleServices : IArticleServices
+    public class BookServices : IBookServices
     {
         private readonly ApplicationDbContext _context;
-        public ArticleServices(ApplicationDbContext context)
+        public BookServices(ApplicationDbContext context)
         {
             _context = context;
         }
-        public async Task<List<Article>> GetArticles()
+        public async Task<List<Book>> GetBooks()
         {
             try
             {
-                return await _context.Articles.ToListAsync();
+                return await _context.Books.ToListAsync();
             }
             catch (Exception ex)
             {
                 throw new Exception("Surgió un error" + ex.Message);
             }
         }
-        public async Task<Article> GetByIdArticle(int id)
+        public async Task<Book> GetByIdBook(int id)
         {
             try
             {
-                Article response = await _context.Articles.FirstOrDefaultAsync(x => x.PKArticle == id);
+                Book response = await _context.Books.FirstOrDefaultAsync(x => x.PKBook == id);
                 return response;
             }
             catch (Exception ex)
@@ -36,19 +36,20 @@ namespace Proyecto24AM.Services.Services
                 throw new Exception("Surgió un error" + ex.Message);
             }
         }
-        public async Task<Article> CreateArticle(Article i)
+        public async Task<Book> CreateBook(Book i)
         {
             try
             {
-                Article request = new Article()
+                Book request = new Book()
                 {
-                    Name = i.Name,
+                    Title = i.Title,
                     Description = i.Description,
-                    Price = i.Price
+                    Images = i.Images,
+                    Active = true
                 };
                 //Con esto se manda a la bd de forma asincrona
-                var result = await _context.Articles.AddAsync(request);
-                 _context.SaveChanges();
+                var result = await _context.Books.AddAsync(request);
+                _context.SaveChanges();
 
                 return request;
             }
@@ -57,21 +58,21 @@ namespace Proyecto24AM.Services.Services
                 throw new Exception("Surgió un error" + ex.Message);
             }
         }
-        public async Task<Article> EditArticle(Article i)
+        public async Task<Book> EditBook(Book i)
         {
             try
             {
-                Article request = _context.Articles.Find(i.PKArticle);
-                request.Name = i.Name;
+                Book request = _context.Books.Find(i.PKBook);
+                request.Title = i.Title;
                 request.Description = i.Description;
-                request.Price = i.Price;
+                request.Images = i.Images;
+                request.Active = i.Active;
                 //Con esto se manda a la bd de forma asincrona
 
                 _context.Entry(request).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
 
                 return request;
-
 
                 /*var result = _context.Articles.Update(request);
                 await _context.SaveChangesAsync();
@@ -83,14 +84,14 @@ namespace Proyecto24AM.Services.Services
                 throw new Exception("Surgió un error" + ex.Message);
             }
         }
-        public async Task<Article> DeleteArticle(Article i)
+        public async Task<Book> DeleteBook(Book i)
         {
             try
             {
-                Article request = _context.Articles.Find(i);
+                Book request = _context.Books.Find(i);
                 if (request != null)
                 {
-                    var result = _context.Articles.Remove(request);
+                    var result = _context.Books.Remove(request);
                     await _context.SaveChangesAsync();
                 }
                 else
@@ -104,15 +105,15 @@ namespace Proyecto24AM.Services.Services
                 throw new Exception("Surgió un error" + ex.Message);
             }
         }
-        public bool DeleteArticle (int id)
+        public bool DeleteBook(int id)
         {
             try
             {
-                Article article = _context.Articles.Find(id);
-                
-                if (article != null)
+                Book book = _context.Books.Find(id);
+
+                if (book != null)
                 {
-                    var res = _context.Articles.Remove(article);
+                    var res = _context.Books.Remove(book);
                     _context.SaveChanges();
                     return true;
                 }

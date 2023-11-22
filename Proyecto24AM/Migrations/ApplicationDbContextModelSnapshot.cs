@@ -54,6 +54,9 @@ namespace Proyecto24AM.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PKBook"));
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -68,7 +71,7 @@ namespace Proyecto24AM.Migrations
 
                     b.HasKey("PKBook");
 
-                    b.ToTable("Libros");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Proyecto24AM.Models.Entities.Rol", b =>

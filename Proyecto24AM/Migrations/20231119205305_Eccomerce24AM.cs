@@ -28,18 +28,19 @@ namespace Proyecto24AM.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Libros",
+                name: "Books",
                 columns: table => new
                 {
                     PKBook = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Images = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Images = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Libros", x => x.PKBook);
+                    table.PrimaryKey("PK_Books", x => x.PKBook);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,7 +109,7 @@ namespace Proyecto24AM.Migrations
                 name: "Articles");
 
             migrationBuilder.DropTable(
-                name: "Libros");
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

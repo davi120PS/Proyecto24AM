@@ -1,0 +1,52 @@
+﻿@model Proyecto24AM.Models.Entities.Book
+@{
+    Layout = "_LayoutDashboard";
+}
+
+<div class="container-fluid">
+    <div class="col-sm-8">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Editar articulo</strong></h1>
+
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="Editar" method="post">
+
+                    @*ID Articulo oculto*@
+                    <input type="hidden" asp-for="PKBook" />
+
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" placeholder="Ingresa el nombre" required />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" placeholder="Ingresa el descripción" required />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Images" class="control-label"></label>
+                        <input asp-for="Images" class="form-control" placeholder="Ingresa el titulo de la imagen" required />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check-label">¿Activo?</label><br />
+                        <div class="form-check">
+                            <input asp-for="Active" class="form-check-input" type="radio" value="true" id="activoSi" required />
+                            <label class="form-check-label" for="activoSi">Sí</label>
+                        </div>
+                        <div class="form-check">
+                            <input asp-for="Active" class="form-check-input" type="radio" value="false" id="activoNo" required />
+                            <label class="form-check-label" for="activoNo">No</label>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-secondary d-block mx-auto"><i class="bi bi-person-fill"></i> Guardar</button>
+                    </div>
+                </form>
+                <a asp-controller="Book" asp-action="Index">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>

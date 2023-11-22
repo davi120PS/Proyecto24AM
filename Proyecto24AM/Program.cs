@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Configuration.GetConnectionString("DefaultConenection")));
 
 //Inyección de dependencias
+builder.Services.AddScoped<IBookServices, BookServices>();
 builder.Services.AddTransient<IArticleServices, ArticleServices>();
 //INVESTIGAR DIFERENCIA DE TIPOS DE DEPENDENCIA, TRASIENT, SCOPED,SINGLETON
 
@@ -35,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Article}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();  

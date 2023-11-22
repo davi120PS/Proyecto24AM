@@ -12,7 +12,7 @@ using Proyecto24AM.Context;
 namespace Proyecto24AM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231110183438_Eccomerce24AM")]
+    [Migration("20231119205305_Eccomerce24AM")]
     partial class Eccomerce24AM
     {
         /// <inheritdoc />
@@ -57,6 +57,9 @@ namespace Proyecto24AM.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PKBook"));
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -71,7 +74,7 @@ namespace Proyecto24AM.Migrations
 
                     b.HasKey("PKBook");
 
-                    b.ToTable("Libros");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Proyecto24AM.Models.Entities.Rol", b =>
