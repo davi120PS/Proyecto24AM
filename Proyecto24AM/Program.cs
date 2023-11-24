@@ -15,6 +15,7 @@ builder.Configuration.GetConnectionString("DefaultConenection")));
 //Inyección de dependencias
 builder.Services.AddScoped<IBookServices, BookServices>();
 builder.Services.AddTransient<IArticleServices, ArticleServices>();
+builder.Services.AddTransient<IUserServices, UserServices>();
 //INVESTIGAR DIFERENCIA DE TIPOS DE DEPENDENCIA, TRASIENT, SCOPED,SINGLETON
 
 var app = builder.Build();
@@ -36,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Dashboard}/{id?}");
 
 app.Run();  

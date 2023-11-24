@@ -44,7 +44,7 @@ namespace Proyecto24AM.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Roles",
+                name: "Rols",
                 columns: table => new
                 {
                     PKRol = table.Column<int>(type: "int", nullable: false)
@@ -53,11 +53,11 @@ namespace Proyecto24AM.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.PKRol);
+                    table.PrimaryKey("PK_Rols", x => x.PKRol);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "Users",
                 columns: table => new
                 {
                     PKUser = table.Column<int>(type: "int", nullable: false)
@@ -70,16 +70,16 @@ namespace Proyecto24AM.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.PKUser);
+                    table.PrimaryKey("PK_Users", x => x.PKUser);
                     table.ForeignKey(
-                        name: "FK_Usuarios_Roles_FKRol",
+                        name: "FK_Users_Rols_FKRol",
                         column: x => x.FKRol,
-                        principalTable: "Roles",
+                        principalTable: "Rols",
                         principalColumn: "PKRol");
                 });
 
             migrationBuilder.InsertData(
-                table: "Roles",
+                table: "Rols",
                 columns: new[] { "PKRol", "Name" },
                 values: new object[,]
                 {
@@ -88,7 +88,7 @@ namespace Proyecto24AM.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Usuarios",
+                table: "Users",
                 columns: new[] { "PKUser", "FKRol", "Name", "Password", "UserName", "lastName" },
                 values: new object[,]
                 {
@@ -97,8 +97,8 @@ namespace Proyecto24AM.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_FKRol",
-                table: "Usuarios",
+                name: "IX_Users_FKRol",
+                table: "Users",
                 column: "FKRol");
         }
 
@@ -112,10 +112,10 @@ namespace Proyecto24AM.Migrations
                 name: "Books");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "Rols");
         }
     }
 }

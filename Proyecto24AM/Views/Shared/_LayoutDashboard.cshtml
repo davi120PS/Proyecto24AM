@@ -26,10 +26,12 @@
             <img src="~/Img/foto1.jpeg" class="profile_image" alt="">
             <h4>davi120PS</h4>
         </div>
-        <a style="background:#19B3D3;" asp-area="" asp-controller="Home" asp-action="Index"><span>Dashboard</span></a>
+        @*<a style="background:#19B3D3;"*@
+        <a asp-area="" asp-controller="Home" asp-action="Dashboard"><span>Inicio</span></a>
+        <a asp-controller="Home" asp-action="Index"><span>Dashboard</span></a>
         <a asp-controller="Article" asp-action="Index"><span>Artículos</span></a>
         <a asp-controller="Book" asp-action="Index"><span>Libros</span></a>
-
+        <a asp-controller="User" asp-action="Index"><span>Usuarios</span></a>
     </div>
 
     <div class="container">

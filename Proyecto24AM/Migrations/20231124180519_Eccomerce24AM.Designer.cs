@@ -12,7 +12,7 @@ using Proyecto24AM.Context;
 namespace Proyecto24AM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231119205305_Eccomerce24AM")]
+    [Migration("20231124180519_Eccomerce24AM")]
     partial class Eccomerce24AM
     {
         /// <inheritdoc />
@@ -91,7 +91,7 @@ namespace Proyecto24AM.Migrations
 
                     b.HasKey("PKRol");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Rols");
 
                     b.HasData(
                         new
@@ -137,7 +137,7 @@ namespace Proyecto24AM.Migrations
 
                     b.HasIndex("FKRol");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Users");
 
                     b.HasData(
                         new

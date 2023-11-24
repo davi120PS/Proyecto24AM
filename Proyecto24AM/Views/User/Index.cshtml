@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Proyecto24AM.Models.Entities.Article>
+﻿@model IEnumerable<Proyecto24AM.Models.Entities.User>
 @*@model List<Proyecto24AM.Models.Entities.Article>*@
 @{
-    ViewData["Title"] = "Articulo";
+    ViewData["Title"] = "Usuario";
     Layout = "_LayoutDashboard";
 }
 
@@ -9,26 +9,28 @@
 
 <div class="row">
     <div class="offset-10 col-4 mb-4">
-        <a asp-action="Crear" asp-controller="Article" class="btn-success mx-auto btn-lg">Nuevo</a>
+        <a asp-action="Crear" asp-controller="User" class="btn-success mx-auto btn-lg">Nuevo</a>
     </div>
 </div>
 <div class="container-fluid ml-5 libro">
     <div class="offset-12">
         <div class="card border">
             <div class="card-header bg-dark">
-                <h1 class="text-white"><strong>Lista de articulos</strong></h1>
+                <h1 class="text-white"><strong>Lista de usuarios</strong></h1>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     @if (Model.Count() > 0)
                     {
-                        <table class="table table-bordered" id="tblArticulo" width="100%" cellpadding="0">
+                        <table class="table table-bordered" id="tblUser" width="100%" cellpadding="0">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th> @Html.DisplayNameFor(x=>x.Name)</th>
-                                    <th> @Html.DisplayNameFor(x=>x.Description)</th>
-                                    <th> @Html.DisplayNameFor(x=>x.Price)</th>
+                                    <th> @Html.DisplayNameFor(x=>x.lastName)</th>
+                                    <th>Usuario</th>
+                                    <th> @Html.DisplayNameFor(x=>x.Password)</th>
+                                    <th>Rol</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -36,17 +38,19 @@
                                 @{
                                     int i = 1;
                                 }
-                                @foreach(var Item in Model) // Mapea cada columna
+                                @foreach (var Item in Model) // Mapea cada columna
                                 {
                                     <tr>
                                         <td><span>@(i++)</span></td>
                                         @*<td>@Html.DisplayFor(x=>Item.PKArticle)</td>*@
-                                        <td>@Html.DisplayFor(x=>Item.Name)</td>
-                                        <td>@Html.DisplayFor(x=>Item.Description)</td>
-                                        <td>@Html.DisplayFor(x=>Item.Price)</td>
+                                        <td> @Html.DisplayFor(x => Item.Name)</td>
+                                        <td> @Html.DisplayFor(x => Item.lastName)</td>
+                                        <td> @Html.DisplayFor(x => Item.UserName) </td>
+                                        <td> @Html.DisplayFor(x => Item.Password) </td>
+                                        <td> @Html.DisplayFor(x => Item.FKRol) </td>
                                         <td>
-                                            <a class="btn btn-warning" asp-action="Editar" asp-route-id=@Item.PKArticle><i class="fa-solid fa-pen-to-square"></i> Editar</a>
-                                            <a class="btn btn-danger eliminar-articulo" data-id="@Item.PKArticle"><i class="fa-solid fa-trash"></i> Eliminar</a>
+                                            <a class="btn btn-warning" asp-action="Editar" asp-route-id=@Item.PKUser><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                                            <a class="btn btn-danger eliminar-articulo" data-id="@Item.PKUser"><i class="fa-solid fa-trash"></i> Eliminar</a>
                                         </td>
                                     </tr>
                                 }
@@ -67,7 +71,7 @@
     <script>
         $(document).ready(function () {
             //Llamar a datatable
-            $('#tblArticulo').DataTable({
+            $('#tblUser').DataTable({
                 language: {
                     "decimal": "",
                     "emptyTable": "No hay información",
@@ -109,7 +113,7 @@
                     var articuloId = $(this).data('id');
 
                     $.ajax({
-                        url: '/Article/Eliminar/' + articuloId,
+                        url: '/User/Eliminar/' + articuloId,
                         type: 'DELETE',
                         success: function (data) {
                             console.log(data)

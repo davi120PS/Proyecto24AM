@@ -12,8 +12,8 @@ namespace Proyecto24AM.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options) { }
 
-        public virtual DbSet<User> Usuarios { get; set; }
-        public virtual DbSet<Rol> Roles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Rol> Rols { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Article> Articles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelbuilder)

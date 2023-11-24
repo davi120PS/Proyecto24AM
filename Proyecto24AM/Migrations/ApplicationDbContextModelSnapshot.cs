@@ -88,7 +88,7 @@ namespace Proyecto24AM.Migrations
 
                     b.HasKey("PKRol");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Rols");
 
                     b.HasData(
                         new
@@ -134,7 +134,7 @@ namespace Proyecto24AM.Migrations
 
                     b.HasIndex("FKRol");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Users");
 
                     b.HasData(
                         new

@@ -124,3 +124,6 @@ label #sidebar_btn {
     height: 100vh;
     transition:  0.5s;
 }
+.libro{
+    position:absolute;
+}
